@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    body {
+        display: flex;
+        place-items: center;
+        min-height: 100vh;
+    }
+
+    div {
+        width: 100%;
+
+        form {
+            display: flex;
+            flex-direction: column;
+            place-items: center;
+
+            label, button {
+                margin: 5px;
+            }
+            button {
+                width: 220px;
+            }
+
+        }
+    }
+</style>
+<body>
+<div>
+    <form action="http://localhost:8080/passport/login" method="post">
+        <label for="username">
+            <span>username: </span>
+            <input id="username" name="username" type="text"/>
+        </label>
+        <label for="password">
+            <span>password: </span>
+            <input id="password" name="password" type="password">
+        </label>
+        <button type="submit">登录</button>
+    </form>
+</div>
+</body>
+<script>
+    if (!window.WebSocket) {
+        console.log("websocket not support")
+        exit(0);
+    }
+    const ws = new WebSocket("ws://localhost:8080/ws")
+
+    ws.onerror = err => {
+        console.log(err)
+    }
+
+    ws.onopen = ev => {
+        console.log(ev)
+    }
+
+    ws.onclose = ev => {
+        console.log(ev)
+    }
+
+    ws.onmessage = ev => {
+        console.log(ev)
+    }
+</script>
+</html>

@@ -1,0 +1,32 @@
+spring:
+  config:
+    import: optional:zookeeper:localhost:2181
+  cloud:
+    zookeeper:
+      connect-string: localhost:2181
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/demo
+    username: root
+    password: root@dice
+mybatis-plus:
+  global-config:
+    banner: off
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+server:
+  servlet:
+    session:
+      cookie:
+        domain: localhost
+        name: __uuid
+        same-site: lax
+        http-only: false
+        max-age: 86400
+        path: /
+  http2:
+    enabled: true
+  tomcat:
+    accesslog:
+      enabled: true
+    basedir: ./
